@@ -1,0 +1,10 @@
+{
+  "yaml.validate": false,
+  "files.associations": {
+    "*.yml": "yaml"
+  },
+  "yaml.customTags": [
+    "!opencv-matrix",
+    "tag:yaml.org,2002:opencv-matrix"
+  ]
+}
