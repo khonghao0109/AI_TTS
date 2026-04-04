@@ -621,15 +621,30 @@ user_session: str | None = Cookie(...)
 ## 🧪 QUÁ TRÌNH TEST (POSTMAN)
 
 - ✔ Test 1 – Health Check: `GET /` → API running
+  ![alt text](<Screenshot 2026-04-04 133651.png>)
 - ✔ Test 2 – Create Post: `POST /posts`
-  - Fix lỗi: `422` do gửi sai Body (Params vs JSON)
+  ![alt text](<Screenshot 2026-04-04 134914.png>)
 - ✔ Test 3 – Get All: `GET /posts`
+  ![alt text](<Screenshot 2026-04-04 135044.png>)
 - ✔ Test 4 – Get By ID: `GET /posts/1`
+  ![alt text](<Screenshot 2026-04-04 135728.png>)
+  ![alt text](<Screenshot 2026-04-04 140001.png>)
 - ✔ Test 5 – Update: `PUT /posts/1` (verify bằng GET lại)
+  ![alt text](<Screenshot 2026-04-04 140242.png>)
+  ![alt text](<Screenshot 2026-04-04 140347.png>)
 - ✔ Test 6 – Delete: `DELETE /posts/1` → `204`, không có body
+  ![alt text](<Screenshot 2026-04-04 144320.png>)
+  ![alt text](<Screenshot 2026-04-04 144353.png>)
+  ![alt text](<Screenshot 2026-04-04 144448.png>)
 - ✔ Test 7 – Query Param: `GET /posts?keyword=python`
+  ![alt text](<Screenshot 2026-04-04 144828.png>)
+  ![alt text](<Screenshot 2026-04-04 144852.png>)
 - ✔ Test 8 – Header: `X-Request-ID: test-123` → log + response header
+  ![alt text](<Screenshot 2026-04-04 145316.png>)
+  ![alt text](<Screenshot 2026-04-04 145350.png>)
 - ✔ Test 9 – Cookie: `Cookie: user_session=abc123`
+  ![alt text](<Screenshot 2026-04-04 145932.png>)
+  ![alt text](<Screenshot 2026-04-04 150010.png>)
   - Fix lỗi: Invalid header format
   - Dùng Cookie Manager
 
