@@ -1,15 +1,21 @@
-# config hệ thống
+"""Project configuration constants."""
 
 import os
 
-# Base directory của project
+# Base directory of project
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# Thư mục dữ liệu
+# Data directories
 DATA_DIR = os.path.join(BASE_DIR, "data")
 DATASET_DIR = os.path.join(DATA_DIR, "dataset")
 ATTENDANCE_DIR = os.path.join(DATA_DIR, "attendance")
-MODELS_DIR = os.path.join(BASE_DIR, "models")   
+ATTENDANCE_DB_PATH = os.path.join(ATTENDANCE_DIR, "attendance.db")
+MODEL_DATA_DIR = os.path.join(DATA_DIR, "models")
+
+# Canonical model paths
+FACE_MODEL_PATH = os.path.join(MODEL_DATA_DIR, "face_model.yml")
+LABELS_PATH = os.path.join(MODEL_DATA_DIR, "labels.json")
+EMPLOYEE_FILE = os.path.join(DATA_DIR, "employees.json")
 
 # Assets
 ASSETS_DIR = os.path.join(BASE_DIR, "assets")
