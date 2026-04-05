@@ -1,0 +1,50 @@
+﻿<mxfile host="app.diagrams.net" modified="2026-04-04T00:00:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram id="day2-architecture" name="Day2 Architecture">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="AI_Attendance - Kien truc tong the (Day2)" style="text;html=1;strokeColor=none;fillColor=none;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="620" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="gui" value="GUI Layer&#xa;- main_window.py&#xa;- sidebar.py&#xa;- dashboard_view.py&#xa;- camera_view.py&#xa;- employee_view.py&#xa;- report_view.py" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F2937;fontColor=#FFFFFF;strokeColor=#60A5FA;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="60" y="120" width="280" height="220" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="controllers" value="Controller Layer&#xa;- camera_controller.py&#xa;- dashboard_controller.py&#xa;- employee_controller.py&#xa;- report_controller.py" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0F766E;fontColor=#FFFFFF;strokeColor=#2DD4BF;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="420" y="120" width="300" height="220" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="services" value="Service Layer&#xa;- attendance_service.py&#xa;- employee_service.py&#xa;- dataset_service.py&#xa;- embedding_service.py (optional)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6D28D9;fontColor=#FFFFFF;strokeColor=#A78BFA;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="800" y="120" width="320" height="220" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="core" value="Core AI Layer&#xa;- camera.py&#xa;- face_detector.py (Haar)&#xa;- face_recognizer.py (LBPH)&#xa;- utils.py" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B45309;fontColor=#FFFFFF;strokeColor=#F59E0B;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="420" y="420" width="300" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="data" value="Data &amp; Storage&#xa;- data/dataset/*&#xa;- data/models/face_model.yml&#xa;- data/models/labels.json&#xa;- data/attendance/attendance.db&#xa;- data/employees.json" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#374151;fontColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="800" y="420" width="320" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#93C5FD;endArrow=classic;endFill=1;" edge="1" parent="1" source="gui" target="controllers">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#99F6E4;endArrow=classic;endFill=1;" edge="1" parent="1" source="controllers" target="services">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#FCD34D;endArrow=classic;endFill=1;" edge="1" parent="1" source="controllers" target="core">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#C4B5FD;endArrow=classic;endFill=1;" edge="1" parent="1" source="services" target="data">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#FCA5A5;endArrow=classic;endFill=1;" edge="1" parent="1" source="core" target="data">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

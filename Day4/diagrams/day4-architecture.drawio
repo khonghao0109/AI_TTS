@@ -1,0 +1,26 @@
+﻿<mxfile host="app.diagrams.net" modified="2026-04-05T00:00:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram id="day4-architecture" name="Day4 Architecture">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="Day4 - FastAPI Basic (in-memory)" style="text;html=1;strokeColor=none;fillColor=none;fontSize=22;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="20" width="560" height="40" as="geometry"/></mxCell>
+
+        <mxCell id="n1" value="Client\nPostman / Browser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1D4ED8;fontColor=#FFFFFF;strokeColor=#93C5FD;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="80" y="170" width="230" height="100" as="geometry"/></mxCell>
+        <mxCell id="n2" value="src/main.py\nFastAPI + request_id middleware" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0F766E;fontColor=#FFFFFF;strokeColor=#5EEAD4;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="360" y="160" width="280" height="120" as="geometry"/></mxCell>
+        <mxCell id="n3" value="src/api/posts.py\nRouter + status + 404" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7C3AED;fontColor=#FFFFFF;strokeColor=#C4B5FD;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="690" y="160" width="280" height="120" as="geometry"/></mxCell>
+        <mxCell id="n4" value="src/services/post_service.py\nCRUD on posts_storage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B45309;fontColor=#FFFFFF;strokeColor=#FCD34D;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="1020" y="160" width="280" height="120" as="geometry"/></mxCell>
+
+        <mxCell id="n5" value="src/schemas/post.py\nPydantic models" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#334155;fontColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="690" y="350" width="280" height="100" as="geometry"/></mxCell>
+        <mxCell id="n6" value="In-memory Storage\nposts_storage: list[Post]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#111827;fontColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="1020" y="350" width="280" height="100" as="geometry"/></mxCell>
+
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="n1" target="n2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="n2" target="n3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="n3" target="n4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;dashed=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="n3" target="n5"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;dashed=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="n4" target="n6"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

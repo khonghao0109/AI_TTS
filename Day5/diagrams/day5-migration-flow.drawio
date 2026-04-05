@@ -1,0 +1,26 @@
+﻿<mxfile host="app.diagrams.net" modified="2026-04-05T00:00:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram id="day5-migration-chi-tiet" name="Day5 - Luồng migration chi tiết">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="DAY5 - ALEMBIC MIGRATION (CHI TIẾT)" style="text;html=1;strokeColor=none;fillColor=none;fontSize=22;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="20" width="700" height="40" as="geometry"/></mxCell>
+
+        <mxCell id="s1" value="Bước 1: Định nghĩa ORM\nsrc/db/models/post.py\n(Base + mapped_column)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7C3AED;fontColor=#FFFFFF;strokeColor=#C4B5FD;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="90" y="170" width="280" height="130" as="geometry"/></mxCell>
+        <mxCell id="s2" value="Bước 2: Cấu hình Alembic\nalembic.ini + env.py\n(target_metadata = Base.metadata)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0F766E;fontColor=#FFFFFF;strokeColor=#5EEAD4;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="420" y="170" width="320" height="130" as="geometry"/></mxCell>
+        <mxCell id="s3" value="Bước 3: Sinh migration\nalembic revision --autogenerate -m \"...\"" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1D4ED8;fontColor=#FFFFFF;strokeColor=#93C5FD;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="790" y="170" width="320" height="130" as="geometry"/></mxCell>
+        <mxCell id="s4" value="Bước 4: Kiểm tra file version\n- Có op.create_table('posts')\n- Đảm bảo up/down rõ ràng" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B45309;fontColor=#FFFFFF;strokeColor=#FCD34D;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="1160" y="170" width="300" height="130" as="geometry"/></mxCell>
+
+        <mxCell id="s5" value="Bước 5: Áp migration\nalembic upgrade head" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#334155;fontColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="420" y="380" width="320" height="120" as="geometry"/></mxCell>
+        <mxCell id="s6" value="Bước 6: Verify DB\npsql -> \\dt\nKỳ vọng: posts, alembic_version" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#111827;fontColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="790" y="380" width="360" height="120" as="geometry"/></mxCell>
+
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="s1" target="s2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="s2" target="s3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="s3" target="s4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="s4" target="s5"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="s5" target="s6"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

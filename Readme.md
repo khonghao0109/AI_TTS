@@ -1,4 +1,4 @@
-﻿# 📘 AI Attendance System – Báo cáo Thực tập
+# 📘 AI Attendance System – Báo cáo Thực tập
 
 ---
 
@@ -265,6 +265,13 @@ Camera → Detect → Recognize → Attendance → Save file
 - Thêm export báo cáo (CSV/Excel/PDF)
 - Tích hợp thông báo check-in/check-out theo thời gian thực (toast/desktop notification)
 
+## 🗺️ Sơ đồ Draw.io Day 2
+
+- [Day2 Architecture](Day2/diagrams/day2-architecture.drawio)
+- [Day2 Camera Attendance Flow](Day2/diagrams/day2-camera-attendance-flow.drawio)
+- [Day2 Delete + Retrain Flow](Day2/diagrams/day2-delete-retrain-flow.drawio)
+- [Day2 Report Flow](Day2/diagrams/day2-report-flow.drawio)
+
 ---
 
 # 🚀 NGÀY 3 – ETL PIPELINE + DATABASE
@@ -467,6 +474,13 @@ with engine.begin()
 - Logging + Monitoring
 - Airflow / Scheduler
 
+## 🗺️ Sơ đồ Draw.io Day 3
+
+- [Day3 Architecture](Day3/diagrams/day3-architecture.drawio)
+- [Day3 ETL Runtime Flow](Day3/diagrams/day3-etl-runtime-flow.drawio)
+- [Day3 DB Schema](Day3/diagrams/day3-db-schema.drawio)
+- [Day3 Idempotent Flow](Day3/diagrams/day3-idempotent-flow.drawio)
+
 ---
 
 # 🚀 NGÀY 4 – FASTAPI (THE MODERN API)
@@ -621,30 +635,30 @@ user_session: str | None = Cookie(...)
 ## 🧪 QUÁ TRÌNH TEST (POSTMAN)
 
 - ✔ Test 1 – Health Check: `GET /` → API running
-  ![alt text](<Screenshot 2026-04-04 133651.png>)
+  ![alt text](<images/Screenshot 2026-04-04 133651.png>)
 - ✔ Test 2 – Create Post: `POST /posts`
-  ![alt text](<Screenshot 2026-04-04 134914.png>)
+  ![alt text](<images/Screenshot 2026-04-04 134914.png>)
 - ✔ Test 3 – Get All: `GET /posts`
-  ![alt text](<Screenshot 2026-04-04 135044.png>)
+  ![alt text](<images/Screenshot 2026-04-04 135044.png>)
 - ✔ Test 4 – Get By ID: `GET /posts/1`
-  ![alt text](<Screenshot 2026-04-04 135728.png>)
-  ![alt text](<Screenshot 2026-04-04 140001.png>)
+  ![alt text](<images/Screenshot 2026-04-04 135728.png>)
+  ![alt text](<images/Screenshot 2026-04-04 140001.png>)
 - ✔ Test 5 – Update: `PUT /posts/1` (verify bằng GET lại)
-  ![alt text](<Screenshot 2026-04-04 140242.png>)
-  ![alt text](<Screenshot 2026-04-04 140347.png>)
+  ![alt text](<images/Screenshot 2026-04-04 140242.png>)
+  ![alt text](<images/Screenshot 2026-04-04 140347.png>)
 - ✔ Test 6 – Delete: `DELETE /posts/1` → `204`, không có body
-  ![alt text](<Screenshot 2026-04-04 144320.png>)
-  ![alt text](<Screenshot 2026-04-04 144353.png>)
-  ![alt text](<Screenshot 2026-04-04 144448.png>)
+  ![alt text](<images/Screenshot 2026-04-04 144320.png>)
+  ![alt text](<images/Screenshot 2026-04-04 144353.png>)
+  ![alt text](<images/Screenshot 2026-04-04 144448.png>)
 - ✔ Test 7 – Query Param: `GET /posts?keyword=python`
-  ![alt text](<Screenshot 2026-04-04 144828.png>)
-  ![alt text](<Screenshot 2026-04-04 144852.png>)
+  ![alt text](<images/Screenshot 2026-04-04 144828.png>)
+  ![alt text](<images/Screenshot 2026-04-04 144852.png>)
 - ✔ Test 8 – Header: `X-Request-ID: test-123` → log + response header
-  ![alt text](<Screenshot 2026-04-04 145316.png>)
-  ![alt text](<Screenshot 2026-04-04 145350.png>)
+  ![alt text](<images/Screenshot 2026-04-04 145316.png>)
+  ![alt text](<images/Screenshot 2026-04-04 145350.png>)
 - ✔ Test 9 – Cookie: `Cookie: user_session=abc123`
-  ![alt text](<Screenshot 2026-04-04 145932.png>)
-  ![alt text](<Screenshot 2026-04-04 150010.png>)
+  ![alt text](<images/Screenshot 2026-04-04 145932.png>)
+  ![alt text](<images/Screenshot 2026-04-04 150010.png>)
   - Fix lỗi: Invalid header format
   - Dùng Cookie Manager
 
@@ -700,11 +714,229 @@ poetry run uvicorn src.main:app --reload
 - ✔ Làm chủ Postman
 - ✔ Hiểu rõ flow backend
 
-# 📌 KẾT LUẬN SAU 4 NGÀY
+## 🗺️ Sơ đồ Draw.io Day 4
 
-- ✔ Hiểu về nền tảng Python, xử lý file và OpenCV
-- ✔ Xây dựng hệ thống AI Attendance có cấu trúc rõ ràng
-- ✔ Làm việc được với Database và ETL pipeline theo hướng chuẩn hóa
-- ✔ Xây dựng REST API hoàn chỉnh bằng FastAPI (CRUD, validation, middleware)
-- ✔ Hiểu và áp dụng các thành phần HTTP quan trọng: path/query/header/cookie
-- ✔ Hình thành tư duy backend thực chiến: tách layer, contract-first, observability cơ bản
+- [Day4 Architecture](Day4/diagrams/day4-architecture.drawio)
+- [Day4 Posts CRUD Flow](Day4/diagrams/day4-posts-crud-flow.drawio)
+- [Day4 Test Flow](Day4/diagrams/day4-test-flow.drawio)
+
+---
+
+# 🚀 NGÀY 5 – DATABASE THẬT + ASYNC + MIGRATION
+
+## 🎯 Mục tiêu
+
+- Chuyển storage từ RAM sang PostgreSQL (persistence)
+- Dùng Async SQLAlchemy cho non-blocking I/O
+- Tách session lifecycle bằng `get_db()`
+- Quản lý schema bằng Alembic migration
+- Verify dữ liệu còn sau khi restart app
+
+## 🏗️ Cấu trúc chính Day 5
+
+```text
+Day5/
+├── src/
+│   ├── api/posts.py
+│   ├── services/post_service.py
+│   ├── db/
+│   │   ├── base.py
+│   │   ├── session.py
+│   │   └── models/post.py
+│   ├── core/config.py
+│   └── main.py
+├── alembic/
+│   ├── env.py
+│   └── versions/
+├── alembic.ini
+├── .env
+└── pyproject.toml
+```
+
+## ⚙️ Thành phần đã hoàn thành
+
+### 1) Async DB Connection
+
+- `create_async_engine(DATABASE_URL)`
+- `async_sessionmaker(...)`
+- `async def get_db()` với `async with ... yield ...`
+
+### 2) ORM Model
+
+- `Base(DeclarativeBase)`
+- `Post` table với `id`, `title`, `content`
+- Mapping bằng `Mapped[]` + `mapped_column()`
+
+### 3) Service Layer dùng DB thật
+
+- CRUD async qua `AsyncSession`
+- `create`: `add -> commit -> refresh`
+- `read`: `select(Post)` + filter keyword `ILIKE`
+- `update/delete`: query theo id, xử lý not found chuẩn
+
+### 4) API Layer orchestration
+
+- Inject DB bằng `Depends(get_db)`
+- Endpoint async gọi service bằng `await`
+- Giữ chuẩn status code + response model
+
+### 5) Alembic Migration
+
+- `alembic revision --autogenerate`
+- `alembic upgrade head`
+- Bảng được tạo: `posts`, `alembic_version`
+
+### 6) Docker PostgreSQL
+
+- Container: `postgres-db`
+- Port mapping dùng cho app: `localhost:5433`
+- `.env` đã cấu hình `DATABASE_URL` theo container
+
+## 🧪 Verify thực tế Day 5
+
+- App load OK với async stack (`asyncpg`, `sqlalchemy`, `alembic`)
+- Migration chạy thành công lên `blog_db`
+- Insert dữ liệu thành công qua service/API
+- Query trong container thấy dữ liệu thật (`SELECT * FROM posts`)
+
+## 🗺️ Sơ đồ Draw.io Day 5
+
+- [Day5 Kiến trúc tổng thể](Day5/diagrams/day5-architecture.drawio)
+- [Day5 Luồng CRUD chi tiết](Day5/diagrams/day5-posts-crud-flow.drawio)
+- [Day5 Luồng migration chi tiết](Day5/diagrams/day5-migration-flow.drawio)
+
+---
+
+# 📚 KIẾN THỨC ĐÃ HỌC ĐƯỢC (THEO TỪNG NGÀY)
+
+## Ngày 1 – Python nền tảng + Camera
+
+### Kiến thức chính
+
+- Cấu trúc dữ liệu cơ bản: `list`, thao tác duyệt dữ liệu bằng `for`
+- Nhập/xuất dữ liệu từ console bằng `input()` và `print()`
+- Làm việc với file text: mở file, ghi file, đọc file
+- Làm quen OpenCV để mở webcam và hiển thị frame realtime
+- Bắt sự kiện phím (`ESC`, `s`) để điều khiển luồng ứng dụng
+
+### Kỹ năng thực hành đạt được
+
+- Xây pipeline mini: nhập dữ liệu → lưu file → đọc lại → thống kê
+- Capture ảnh từ webcam và lưu đúng cấu trúc thư mục dataset
+- Xử lý vòng lặp realtime cho camera ổn định
+
+### Mindset học được
+
+- Chia bài toán nhỏ trước khi ghép thành luồng lớn
+- Kiểm tra từng bước bằng output đơn giản để debug nhanh
+
+## Ngày 2 – AI Attendance System
+
+### Kiến thức chính
+
+- Thiết kế kiến trúc project theo module: `core`, `services`, `gui`, `data`
+- Tách rõ logic nghiệp vụ và phần giao diện (separation of concerns)
+- Luồng nhận diện cơ bản: camera → detect → recognize → attendance
+- Tổ chức dữ liệu dataset theo nhân sự để phục vụ training
+
+### Kỹ năng thực hành đạt được
+
+- Xây GUI có cấu trúc rõ ràng, tách component có thể tái sử dụng
+- Cài đặt logic chấm công theo ca làm (`Late`, `Early Leave`)
+- Đồng bộ dữ liệu attendance và metadata nhân sự vào SQLite
+- Xử lý thao tác xóa nhân sự triệt để + auto retrain model
+- Chạy tác vụ nền bằng thread để tránh treo UI
+
+### Mindset học được
+
+- Hệ thống AI thực tế không chỉ có model, mà còn là data + luồng vận hành
+- UI mượt cần tách tác vụ nặng sang background
+
+## Ngày 3 – ETL Pipeline + Database
+
+### Kiến thức chính
+
+- Quản lý môi trường và dependency bằng Poetry
+- ETL đầy đủ: `Extract -> Transform -> Load`
+- Làm việc với SQLAlchemy Core ở mức schema và insert dữ liệu
+- Thiết kế schema DB có ràng buộc (`UNIQUE`, index)
+- Tư duy idempotent pipeline: chạy nhiều lần không nhân bản dữ liệu
+
+### Kỹ năng thực hành đạt được
+
+- Gọi API có timeout và error handling
+- Làm sạch dữ liệu trước khi load vào DB
+- Dùng `INSERT OR IGNORE` để chống duplicate
+- Dùng context manager (`with engine.begin()`) để auto commit/rollback
+
+### Mindset học được
+
+- Dữ liệu sạch quan trọng hơn dữ liệu nhiều
+- Thiết kế schema đúng từ đầu giúp giảm lỗi về sau
+
+## Ngày 4 – FastAPI cơ bản (API Layer)
+
+### Kiến thức chính
+
+- Xây REST API với FastAPI theo chuẩn route HTTP
+- Validate request bằng Pydantic schema
+- Thiết kế API contract bằng `response_model`
+- Triển khai CRUD đầy đủ cho tài nguyên `posts`
+- Sử dụng `Path`, `Query`, `Header`, `Cookie` đúng mục đích
+- Dùng middleware cho cross-cutting concern (request id logging)
+
+### Kỹ năng thực hành đạt được
+
+- Xử lý status code chuẩn: `201`, `204`, `404`, `422`
+- Tách layer `API -> Service -> Storage (RAM)`
+- Thêm filter keyword cho endpoint list mà không làm bẩn API layer
+- Debug thực tế qua Postman cho từng case endpoint
+
+### Mindset học được
+
+- API layer chỉ nên orchestration, không nhồi business logic
+- Contract rõ ràng giúp code dễ maintain và dễ test hơn
+
+## Ngày 5 – Database thật + Async + Migration
+
+### Kiến thức chính
+
+- Chuyển từ in-memory sang PostgreSQL persistence
+- Kết nối DB bằng Async SQLAlchemy (`create_async_engine`)
+- Quản lý session lifecycle bằng dependency `get_db()` và `yield`
+- Define ORM model hiện đại với `DeclarativeBase`, `Mapped[]`, `mapped_column()`
+- Dùng Alembic để quản lý migration thay vì `create_all()` thủ công
+- Chạy DB qua Docker và hiểu rõ host/container connection
+
+### Kỹ năng thực hành đạt được
+
+- Refactor service sang async CRUD với `AsyncSession`
+- Viết query bằng `select(...)`, `scalar_one_or_none()`, `scalars().all()`
+- Update/Delete chuẩn với flow query -> mutate -> commit
+- Tạo và apply migration: `revision --autogenerate` + `upgrade head`
+- Verify end-to-end: API tạo dữ liệu và dữ liệu vẫn tồn tại sau restart
+
+### Mindset học được
+
+- Day 5 là bước chuyển từ code học tập sang tư duy production backend
+- Migration là lịch sử tiến hóa schema, không chỉ là “tạo bảng”
+
+## Năng lực tích lũy sau từng ngày
+
+- Từ script đơn giản (Day 1) đến hệ thống có module (Day 2)
+- Từ xử lý dữ liệu cục bộ đến pipeline dữ liệu chuẩn (Day 3)
+- Từ backend API cơ bản đến contract-first design (Day 4)
+- Từ API in-memory đến backend persistent, async, migration-ready (Day 5)
+
+---
+
+# 📌 KẾT LUẬN SAU 5 NGÀY
+
+- ✔ Nắm nền tảng Python, OpenCV, xử lý dữ liệu cơ bản
+- ✔ Xây dựng hệ thống AI Attendance có tổ chức
+- ✔ Hoàn thành ETL pipeline + database workflow
+- ✔ Xây dựng FastAPI API đầy đủ (CRUD, validation, middleware)
+- ✔ Hoàn thành nâng cấp Day5: Async DB + PostgreSQL + Alembic migration
+- ✔ Tư duy backend theo từng lớp tiến hóa: `API -> DB -> Production-ready`
+
+👉 Sẵn sàng bước sang Day 6 để làm các phần nâng cao: pagination, tối ưu query, auth/security, logging nâng cao.

@@ -1,0 +1,28 @@
+﻿<mxfile host="app.diagrams.net" modified="2026-04-05T00:00:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram id="day5-kien-truc" name="Day5 - Kiến trúc tổng thể">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="DAY5 - FASTAPI + ASYNC SQLALCHEMY + POSTGRESQL + ALEMBIC" style="text;html=1;strokeColor=none;fillColor=none;fontSize=22;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="20" width="1100" height="40" as="geometry"/></mxCell>
+
+        <mxCell id="n1" value="1) Client\nPostman / Browser / Test" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1D4ED8;fontColor=#FFFFFF;strokeColor=#93C5FD;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="70" y="180" width="230" height="110" as="geometry"/></mxCell>
+        <mxCell id="n2" value="2) Middleware (src/main.py)\n- Sinh/đọc X-Request-ID\n- Ghi log request\n- Gắn header response" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0F766E;fontColor=#FFFFFF;strokeColor=#5EEAD4;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="340" y="160" width="320" height="150" as="geometry"/></mxCell>
+        <mxCell id="n3" value="3) API Router (src/api/posts.py)\n- Validate input (Pydantic)\n- Depends(get_db)\n- Mapping status code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7C3AED;fontColor=#FFFFFF;strokeColor=#C4B5FD;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="700" y="160" width="330" height="150" as="geometry"/></mxCell>
+        <mxCell id="n4" value="4) Service (src/services/post_service.py)\n- Async CRUD\n- Query bằng ORM\n- Commit/Refresh" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B45309;fontColor=#FFFFFF;strokeColor=#FCD34D;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="1070" y="160" width="300" height="150" as="geometry"/></mxCell>
+
+        <mxCell id="n5" value="5) Session Layer (src/db/session.py)\n- create_async_engine\n- async_sessionmaker\n- get_db() lifecycle" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0284C7;fontColor=#FFFFFF;strokeColor=#7DD3FC;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="700" y="370" width="330" height="140" as="geometry"/></mxCell>
+        <mxCell id="n6" value="6) PostgreSQL Docker\n- Container: postgres-db\n- Database: blog_db\n- Table: posts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#111827;fontColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="1070" y="360" width="300" height="150" as="geometry"/></mxCell>
+        <mxCell id="n7" value="7) Alembic\n- env.py đọc Base.metadata\n- revision --autogenerate\n- upgrade head" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#334155;fontColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="340" y="370" width="320" height="140" as="geometry"/></mxCell>
+
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="n1" target="n2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="n2" target="n3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="n3" target="n4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="n3" target="n5"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="n4" target="n6"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;dashed=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="n7" target="n6"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

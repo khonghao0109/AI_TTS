@@ -1,0 +1,28 @@
+﻿<mxfile host="app.diagrams.net" modified="2026-04-05T00:00:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram id="day5-crud-chi-tiet" name="Day5 - Luồng CRUD chi tiết">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="DAY5 - LUỒNG CRUD POSTS (ASYNC + DB THẬT)" style="text;html=1;strokeColor=none;fillColor=none;fontSize=22;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="20" width="900" height="40" as="geometry"/></mxCell>
+
+        <mxCell id="c1" value="A. CREATE\nPOST /posts\n1) API nhận body\n2) Service tạo Post\n3) db.add + commit + refresh\n4) Trả 201" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1D4ED8;fontColor=#FFFFFF;strokeColor=#93C5FD;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="60" y="120" width="260" height="180" as="geometry"/></mxCell>
+        <mxCell id="r1" value="B. READ ALL\nGET /posts?keyword=...\n1) Service select(Post)\n2) Nếu có keyword: ILIKE\n3) execute -> scalars().all()\n4) Trả 200" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7C3AED;fontColor=#FFFFFF;strokeColor=#C4B5FD;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="350" y="120" width="280" height="180" as="geometry"/></mxCell>
+        <mxCell id="r2" value="C. READ BY ID\nGET /posts/{id}\n1) select(Post).where(id)\n2) scalar_one_or_none()\n3) None -> 404\n4) Có dữ liệu -> 200" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0F766E;fontColor=#FFFFFF;strokeColor=#5EEAD4;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="670" y="120" width="280" height="180" as="geometry"/></mxCell>
+        <mxCell id="u1" value="D. UPDATE\nPUT /posts/{id}\n1) Query theo id\n2) Không có -> 404\n3) Update field\n4) commit + refresh -> 200" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B45309;fontColor=#FFFFFF;strokeColor=#FCD34D;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="990" y="120" width="280" height="180" as="geometry"/></mxCell>
+        <mxCell id="d1" value="E. DELETE\nDELETE /posts/{id}\n1) Query theo id\n2) Không có -> 404\n3) db.delete + commit\n4) Trả 204" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#334155;fontColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="1310" y="120" width="240" height="180" as="geometry"/></mxCell>
+
+        <mxCell id="db" value="PostgreSQL / posts\nPersistence qua restart" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#111827;fontColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="610" y="390" width="360" height="120" as="geometry"/></mxCell>
+        <mxCell id="resp" value="Response contract\nPydantic schema\nStatus: 201,200,204,404,422" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0284C7;fontColor=#FFFFFF;strokeColor=#7DD3FC;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="610" y="550" width="360" height="120" as="geometry"/></mxCell>
+
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="c1" target="db"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="r1" target="db"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="r2" target="db"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="u1" target="db"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="d1" target="db"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;dashed=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="db" target="resp"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

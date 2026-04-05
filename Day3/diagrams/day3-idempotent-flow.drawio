@@ -1,0 +1,32 @@
+﻿<mxfile host="app.diagrams.net" modified="2026-04-04T00:00:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram id="day3-idempotent" name="Idempotent Load Flow">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="Luong idempotent khi chay ETL nhieu lan" style="text;html=1;strokeColor=none;fillColor=none;fontSize=22;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="20" width="520" height="40" as="geometry"/></mxCell>
+
+        <mxCell id="n1" value="Dataset (API)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0F766E;fontColor=#FFFFFF;strokeColor=#5EEAD4;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="80" y="140" width="220" height="90" as="geometry"/></mxCell>
+        <mxCell id="n2" value="Normalize key&#xa;(book_id / isbn)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7C3AED;fontColor=#FFFFFF;strokeColor=#C4B5FD;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="360" y="140" width="240" height="90" as="geometry"/></mxCell>
+        <mxCell id="n3" value="SQLite table books&#xa;UNIQUE(book_id)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1D4ED8;fontColor=#FFFFFF;strokeColor=#93C5FD;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="680" y="120" width="280" height="120" as="geometry"/></mxCell>
+        <mxCell id="n4" value="INSERT OR IGNORE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B45309;fontColor=#FFFFFF;strokeColor=#FCD34D;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="1020" y="140" width="220" height="90" as="geometry"/></mxCell>
+
+        <mxCell id="d1" value="Record da ton tai?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#111827;fontColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="1280" y="130" width="180" height="110" as="geometry"/></mxCell>
+        <mxCell id="n5" value="YES: Bo qua&#xa;khong trung du lieu" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#334155;fontColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="1500" y="70" width="220" height="90" as="geometry"/></mxCell>
+        <mxCell id="n6" value="NO: Them moi" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#059669;fontColor=#FFFFFF;strokeColor=#6EE7B7;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="1500" y="210" width="220" height="90" as="geometry"/></mxCell>
+
+        <mxCell id="n7" value="Thong ke ket qua&#xa;inserted_count, ignored_count" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#374151;fontColor=#FFFFFF;strokeColor=#D1D5DB;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="1180" y="350" width="320" height="100" as="geometry"/></mxCell>
+
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="n1" target="n2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="n2" target="n3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="n3" target="n4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="n4" target="d1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" value="Yes" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="d1" target="n5"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" value="No" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="d1" target="n6"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;dashed=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="n5" target="n7"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;dashed=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="n6" target="n7"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,20 @@
+﻿<mxfile host="app.diagrams.net" modified="2026-04-04T00:00:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram id="day3-db-schema" name="DB Schema">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="Day3 - SQLite Schema (books)" style="text;html=1;strokeColor=none;fillColor=none;fontSize=22;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="20" width="420" height="40" as="geometry"/></mxCell>
+
+        <mxCell id="table" value="TABLE: books&#xa;----------------------------------&#xa;id INTEGER PRIMARY KEY&#xa;title TEXT NOT NULL&#xa;author TEXT NULL&#xa;publish_year INTEGER INDEX&#xa;work_key TEXT UNIQUE" style="shape=swimlane;rounded=1;whiteSpace=wrap;html=1;fillColor=#111827;fontColor=#FFFFFF;strokeColor=#60A5FA;strokeWidth=2;startSize=34;" vertex="1" parent="1"><mxGeometry x="120" y="110" width="420" height="280" as="geometry"/></mxCell>
+
+        <mxCell id="note1" value="Constraint: UNIQUE(work_key)&#xa;=> chong duplicate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0F766E;fontColor=#FFFFFF;strokeColor=#5EEAD4;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="620" y="130" width="300" height="90" as="geometry"/></mxCell>
+        <mxCell id="note2" value="Load strategy: INSERT OR IGNORE&#xa;=> idempotent pipeline" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7C3AED;fontColor=#FFFFFF;strokeColor=#C4B5FD;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="620" y="250" width="300" height="90" as="geometry"/></mxCell>
+
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="table" target="note1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="table" target="note2"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

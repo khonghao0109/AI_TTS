@@ -1,0 +1,30 @@
+﻿<mxfile host="app.diagrams.net" modified="2026-04-04T00:00:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram id="day2-delete-retrain" name="Delete Employee + Retrain">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="Luong Xoa Nhan su triet de + Auto Retrain" style="text;html=1;strokeColor=none;fillColor=none;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="650" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s1" value="Nhan su tab&#xa;on_delete_button_clicked" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1D4ED8;fontColor=#FFFFFF;strokeColor=#93C5FD;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="80" y="110" width="220" height="90" as="geometry"/></mxCell>
+        <mxCell id="s2" value="EmployeeController&#xa;delete_employee(user_id)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0F766E;fontColor=#FFFFFF;strokeColor=#5EEAD4;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="360" y="110" width="240" height="90" as="geometry"/></mxCell>
+        <mxCell id="s3" value="EmployeeService&#xa;1) Xoa employees.json&#xa;2) Xoa attendance DB data&#xa;3) shutil.rmtree(dataset/user_id)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7C3AED;fontColor=#FFFFFF;strokeColor=#C4B5FD;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="660" y="90" width="300" height="130" as="geometry"/></mxCell>
+        <mxCell id="s4" value="train_model_async()&#xa;Khoi tao QThread + RetrainWorker" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B45309;fontColor=#FFFFFF;strokeColor=#FCD34D;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="1020" y="110" width="280" height="90" as="geometry"/></mxCell>
+        <mxCell id="s5" value="FaceRecognizer.train()&#xa;Cleanup model cu (.yml/.h5/...)&#xa;Quet lai dataset&#xa;Save model moi + labels" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#374151;fontColor=#FFFFFF;strokeColor=#D1D5DB;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="1360" y="90" width="300" height="130" as="geometry"/></mxCell>
+
+        <mxCell id="s6" value="UI cap nhat status&#xa;Enable lai button" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0F172A;fontColor=#E2E8F0;strokeColor=#64748B;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="1180" y="310" width="220" height="80" as="geometry"/></mxCell>
+        <mxCell id="s7" value="Signals&#xa;- dataset_updated&#xa;- reload Employee tab&#xa;- refresh Dashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#111827;fontColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="820" y="300" width="300" height="100" as="geometry"/></mxCell>
+
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="s1" target="s2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="s2" target="s3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="s3" target="s4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="s4" target="s5"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="s5" target="s6"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="s6" target="s7"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
