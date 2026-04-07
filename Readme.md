@@ -336,7 +336,7 @@ day3-etl-pipeline/
 
 #### Bảng books:
 
-| Column       | Mô tả       |
+| Column       | Mô tả    |
 | ------------ | ----------- |
 | id           | Primary Key |
 | title        | NOT NULL    |
@@ -573,7 +573,7 @@ class PostCreate(BaseModel):
 
 ### 5. HTTP Status Code
 
-| Code | Ý nghĩa          |
+| Code | Ý nghĩa         |
 | ---- | ---------------- |
 | 200  | OK               |
 | 201  | Created          |
@@ -919,7 +919,7 @@ Day5/
 ### Mindset học được
 
 - Day 5 là bước chuyển từ code học tập sang tư duy production backend
-- Migration là lịch sử tiến hóa schema, không chỉ là “tạo bảng”
+- Migration là lịch sử tiến hóa schema, không chỉ là "tạo bảng"
 
 ## Năng lực tích lũy sau từng ngày
 
@@ -930,13 +930,85 @@ Day5/
 
 ---
 
-# 📌 KẾT LUẬN SAU 5 NGÀY
+# 🚀 NGÀY 6 – AUTHENTICATION (JWT + PROTECT API)
 
-- ✔ Nắm nền tảng Python, OpenCV, xử lý dữ liệu cơ bản
-- ✔ Xây dựng hệ thống AI Attendance có tổ chức
-- ✔ Hoàn thành ETL pipeline + database workflow
-- ✔ Xây dựng FastAPI API đầy đủ (CRUD, validation, middleware)
-- ✔ Hoàn thành nâng cấp Day5: Async DB + PostgreSQL + Alembic migration
-- ✔ Tư duy backend theo từng lớp tiến hóa: `API -> DB -> Production-ready`
+## 🎯 Mục tiêu
 
-👉 Sẵn sàng bước sang Day 6 để làm các phần nâng cao: pagination, tối ưu query, auth/security, logging nâng cao.
+- Xây dựng luồng Authentication hoàn chỉnh với FastAPI + JWT
+- Triển khai `register/login` và bảo vệ API bằng Bearer Token
+- Kiểm thử đầy đủ các case bảo mật cơ bản
+
+## 🏗️ Cấu trúc chính Day 6
+
+```text
+Day6/
+├── app/
+│   ├── api/v1/
+│   │   ├── auth.py
+│   │   └── posts.py
+│   ├── core/security.py
+│   ├── db/session.py
+│   ├── dependencies/auth.py
+│   ├── models/user.py
+│   ├── schemas/
+│   │   ├── auth.py
+│   │   └── user.py
+│   ├── services/
+│   │   ├── auth_service.py
+│   │   └── user_service.py
+│   └── utils/hash.py
+├── .env
+└── pyproject.toml
+```
+
+## 🧠 Kiến trúc Auth
+
+```text
+Client -> /register|/login -> Service -> DB
+Client -> Bearer Token -> Dependency(get_current_user) -> Protected API
+```
+
+## ⚙️ Thành phần đã hoàn thành
+
+- `POST /api/v1/register`: tạo user mới, hash password trước khi lưu
+- `POST /api/v1/login`: xác thực user và trả JWT access token
+- `GET /api/v1/posts`: endpoint private, bắt buộc token hợp lệ
+- `get_current_user`: decode token, lấy `sub`, query user từ DB, trả 401 nếu fail
+
+## 🧪 Test Day 6 (Postman)
+
+- ✅ Test Register
+  ![Day6 Register](<images/Screenshot 2026-04-07 150946.png>)
+
+- ✅ Test Login
+  ![Day6 Login](<images/Screenshot 2026-04-07 151035.png>)
+
+- ✅ Test Call API (token đúng)
+  ![Day6 Call API](<images/Screenshot 2026-04-07 151053.png>)
+
+- ✅ Test Token False (token sai)
+  ![Day6 Token False](<images/Screenshot 2026-04-07 151208.png>)
+
+## 🎯 Kết quả đạt được Day 6
+
+- Hoàn thành Auth flow nền tảng: Register + Login + JWT
+- Bảo vệ API bằng `OAuth2PasswordBearer` và dependency xác thực user hiện tại
+- Đảm bảo đúng hành vi bảo mật:
+  - Không token -> `401`
+  - Token sai -> `401`
+  - Token đúng -> `200`
+- Sẵn sàng mở rộng Role-based Access Control (RBAC)
+
+---
+
+# 📌 KẾT LUẬN SAU 6 NGÀY
+
+- ✔ Nắm nền tảng Python, OpenCV và xử lý dữ liệu cơ bản
+- ✔ Xây dựng hệ thống AI Attendance có tổ chức module rõ ràng
+- ✔ Hoàn thành ETL pipeline và tư duy dữ liệu idempotent
+- ✔ Làm chủ FastAPI theo hướng contract-first và tách layer
+- ✔ Nâng cấp backend sang PostgreSQL + Async SQLAlchemy + Alembic migration
+- ✔ Hoàn thiện Authentication/JWT và bảo vệ API theo chuẩn OAuth2 Bearer
+
+👉 Từ Day 1 đến Day 6, hệ thống đã tiến hóa theo đúng lộ trình backend thực tế:
+`Python basics -> System design -> Data pipeline -> API layer -> Async DB -> Auth/Security`.
